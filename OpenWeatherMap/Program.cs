@@ -28,7 +28,9 @@ namespace OpenWeatherMap
                 Console.WriteLine("~~~~~~");
                 Console.WriteLine("Please enter zipcode:");
                 var zipcode = Console.ReadLine();
-                var weatherURL = ($"https://api.openweathermap.org/data/2.5/weather?zip={zipcode},us&appid=020ccb1cf43540939a3c071de3497f9d&units=imperial");
+                Console.WriteLine("Please enter api key:");
+                var apiKey = Console.ReadLine();
+                var weatherURL = ($"https://api.openweathermap.org/data/2.5/weather?zip={zipcode},us&appid={apiKey}&units=imperial");
 
                 var currentWeather = client.GetStringAsync(weatherURL).Result;
                 var formatWeather = JObject.Parse(currentWeather).GetValue("main").ToString();
